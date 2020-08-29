@@ -3,8 +3,9 @@ package machine
 import "fmt"
 
 type Command struct {
-	JarFile string
-	Args    []string
+	JarFile   string
+	ClassPath string
+	Args      []string
 }
 
 func Run(command *Command) {

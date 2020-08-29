@@ -18,5 +18,7 @@ var runCmd = &cobra.Command{
 
 func init() {
 	runCmd.Flags().StringVarP(&command.JarFile, "jar", "", "", "path to jar file")
+	runCmd.Flags().StringVarP(&command.ClassPath, "classpath", "", "", "classpath")
+	runCmd.Flags().StringVarP(&command.ClassPath, "jre", "", "", "jre")
 	gvmCmd.AddCommand(runCmd)
 }
