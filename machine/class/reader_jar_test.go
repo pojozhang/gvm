@@ -1,4 +1,4 @@
-package classpath
+package class
 
 import (
 	"github.com/stretchr/testify/assert"

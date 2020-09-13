@@ -1,4 +1,4 @@
-package classpath
+package class
 
 type ClassReader interface {
 	readClass(className string) ([]byte, error)

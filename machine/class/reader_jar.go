@@ -1,4 +1,4 @@
-package classpath
+package class
 
 import (
 	"archive/zip"
@@ -33,12 +33,13 @@ func (r *JarFileReader) readClass(className string) ([]byte, error) {
 			return nil, err
 		}
 		defer rc.Close()
-		println(file.Name)
-		data, err := ioutil.ReadAll(rc)
-		if err != nil {
-			return nil, err
+		if file.Name == className {
+			data, err := ioutil.ReadAll(rc)
+			if err != nil {
+				return nil, err
+			}
+			return data, nil
 		}
-		println(data)
 	}
 	return nil, nil
 }

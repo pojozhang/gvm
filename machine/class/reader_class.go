@@ -1,4 +1,4 @@
-package classpath
+package class
 
 import (
 	"io/ioutil"

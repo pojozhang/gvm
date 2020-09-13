@@ -27,3 +27,18 @@ func (r *ClassFileReader) readBytes(n uint32) []byte {
 	r.data = r.data[n:]
 	return bytes
 }
+
+func (r *ClassFileReader) readTable() []uint16 {
+	n := r.readUint16()
+	table := make([]uint16, n)
+	for i := range table {
+		table[i] = r.readUint16()
+	}
+	return table
+}
+
+func NewClassFileReader(data []byte) *ClassFileReader {
+	return &ClassFileReader{
+		data,
+	}
+}
