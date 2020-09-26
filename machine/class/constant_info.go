@@ -3,20 +3,20 @@ package class
 import "math"
 
 const (
-	CONSTANT_UTF8                 = 1
-	CONSTANT_INTEGER              = 3
-	CONSTANT_FLOAT                = 4
-	CONSTANT_LONG                 = 5
-	CONSTANT_DOUBLE               = 6
-	CONSTANT_CLASS                = 7
-	CONSTANT_STRING               = 8
-	CONSTANT_FIELD_REF            = 9
-	CONSTANT_METHOD_REF           = 10
-	CONSTANT_INTERFACE_METHOD_REF = 11
-	CONSTANT_NAME_AND_TYPE        = 12
-	CONSTANT_METHOD_HANDLE        = 15
-	CONSTANT_METHOD_TYPE          = 16
-	CONSTANT_INVOKE_DYNAMIC       = 18
+	ConstantUtf8               = 1
+	ConstantInteger            = 3
+	ConstantFloat              = 4
+	ConstantLong               = 5
+	ConstantDouble             = 6
+	ConstantClass              = 7
+	ConstantString             = 8
+	ConstantFieldRef           = 9
+	ConstantMethodRef          = 10
+	ConstantInterfaceMethodRef = 11
+	ConstantNameAndType        = 12
+	ConstantMethodHandle       = 15
+	ConstantMethodType         = 16
+	ConstantInvokeDynamic      = 18
 )
 
 type ConstantInfo interface {
@@ -27,31 +27,31 @@ func newConstantInfo(r *ClassFileReader, cp ConstantPool) ConstantInfo {
 	tag := r.readUint8()
 	var c ConstantInfo
 	switch tag {
-	case CONSTANT_UTF8:
+	case ConstantUtf8:
 		c = &Utf8ConstantInfo{}
-	case CONSTANT_INTEGER:
+	case ConstantInteger:
 		c = &IntegerConstantInfo{}
-	case CONSTANT_LONG:
+	case ConstantLong:
 		c = &LongConstantInfo{}
-	case CONSTANT_FLOAT:
+	case ConstantFloat:
 		c = &FloatConstantInfo{}
-	case CONSTANT_DOUBLE:
+	case ConstantDouble:
 		c = &DoubleConstantInfo{}
-	case CONSTANT_CLASS:
+	case ConstantClass:
 		c = &ClassConstantInfo{cp: cp}
-	case CONSTANT_STRING:
+	case ConstantString:
 		c = &StringConstantInfo{cp: cp}
-	case CONSTANT_FIELD_REF:
+	case ConstantFieldRef:
 		c = &FieldRefConstantInfo{}
-	case CONSTANT_METHOD_REF:
+	case ConstantMethodRef:
 		c = &MethodRefConstantInfo{}
-	case CONSTANT_INTERFACE_METHOD_REF:
+	case ConstantInterfaceMethodRef:
 		c = &InterfaceMethodRefConstantInfo{}
-	case CONSTANT_NAME_AND_TYPE:
+	case ConstantNameAndType:
 		c = &NameAndTypeConstantInfo{cp: cp}
-	case CONSTANT_METHOD_HANDLE:
-	case CONSTANT_METHOD_TYPE:
-	case CONSTANT_INVOKE_DYNAMIC:
+	case ConstantMethodHandle:
+	case ConstantMethodType:
+	case ConstantInvokeDynamic:
 	}
 	c.read(r)
 	return c
