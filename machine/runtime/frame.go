@@ -8,6 +8,14 @@ type Frame struct {
 	operandStack *OperandStack
 }
 
+func (f *Frame) GetOperandStack() *OperandStack {
+	return f.operandStack
+}
+
+func (f *Frame) GetLocalVars() *LocalVars {
+	return f.localVars
+}
+
 type Slot struct {
 	num int32
 	ref *Object
@@ -118,4 +126,14 @@ func (s *OperandStack) PushRef(object *Object) {
 func (s *OperandStack) PopRef() *Object {
 	s.size--
 	return s.slots[s.size].ref
+}
+
+func (s *OperandStack) PushSlot(slot Slot) {
+	s.slots[s.size] = slot
+	s.size++
+}
+
+func (s *OperandStack) PopSlot() Slot {
+	s.size--
+	return s.slots[s.size]
 }
