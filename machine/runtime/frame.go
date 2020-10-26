@@ -4,16 +4,33 @@ import "math"
 
 type Frame struct {
 	next         *Frame
-	localVars    *LocalVars
+	localVars    LocalVars
 	operandStack *OperandStack
+	thread       *Thread
 }
 
 func (f *Frame) GetOperandStack() *OperandStack {
 	return f.operandStack
 }
 
-func (f *Frame) GetLocalVars() *LocalVars {
+func (f *Frame) GetLocalVars() LocalVars {
 	return f.localVars
+}
+
+func (f *Frame) GetThread() *Thread {
+	return f.thread
+}
+
+func (f *Frame) SetNextPC(offset int) {
+
+}
+
+func NewFrame(thread *Thread, maxLocals, maxStack uint) *Frame {
+	return &Frame{
+		thread:       thread,
+		localVars:    newLocalVars(maxStack),
+		operandStack: newOperandStack(maxStack),
+	}
 }
 
 type Slot struct {
@@ -97,7 +114,7 @@ func (s *OperandStack) PushLong(value int64) {
 
 func (s *OperandStack) PopLong() int64 {
 	s.size -= 2
-	return int64(s.slots[s.size].num) | int64(s.slots[s.size+1].num)<<32
+	return int64(uint32(s.slots[s.size].num)) | (int64(uint32(s.slots[s.size+1].num)) << 32)
 }
 
 func (s *OperandStack) PushFloat(value float32) {

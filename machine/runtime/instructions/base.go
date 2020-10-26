@@ -15,11 +15,19 @@ type BranchInstruction struct {
 	offset int
 }
 
+func (i *BranchInstruction) GetOffset() int {
+	return i.offset
+}
+
 func (i *BranchInstruction) FetchOperands(reader *runtime.BytecodeReader) {
 	i.offset = int(reader.ReadInt16())
 }
 
 func (i *BranchInstruction) Execute(frame *runtime.Frame) {
+}
+
+func (i *BranchInstruction) Branch(frame *runtime.Frame, offset int) {
+	frame.SetNextPC(frame.GetThread().GetPC() + offset)
 }
 
 type Index8Instruction struct {
