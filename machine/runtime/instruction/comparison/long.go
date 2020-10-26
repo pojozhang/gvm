@@ -2,7 +2,7 @@ package comparison
 
 import (
 	"gvm/machine/runtime"
-	instruction "gvm/machine/runtime/instructions"
+	instruction "gvm/machine/runtime/instruction"
 )
 
 type LCmp struct {

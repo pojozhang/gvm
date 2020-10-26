@@ -2,7 +2,7 @@ package math
 
 import (
 	"gvm/machine/runtime"
-	"gvm/machine/runtime/instructions"
+	"gvm/machine/runtime/instruction"
 	"math"
 )
 

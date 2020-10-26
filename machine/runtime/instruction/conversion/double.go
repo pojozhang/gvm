@@ -2,7 +2,7 @@ package conversion
 
 import (
 	"gvm/machine/runtime"
-	instruction "gvm/machine/runtime/instructions"
+	instruction "gvm/machine/runtime/instruction"
 )
 
 type D2I struct {
