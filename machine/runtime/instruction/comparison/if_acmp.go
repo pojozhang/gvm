@@ -12,7 +12,7 @@ type IfACmpEq struct {
 func (i *IfACmpEq) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	if stack.PopRef() == stack.PopRef() {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -23,6 +23,6 @@ type IfACmpNe struct {
 func (i *IfACmpNe) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	if stack.PopRef() != stack.PopRef() {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }

@@ -11,7 +11,7 @@ type IfEq struct {
 
 func (i *IfEq) Execute(frame *runtime.Frame) {
 	if frame.GetOperandStack().PopInt() == 0 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -21,7 +21,7 @@ type IfNe struct {
 
 func (i *IfNe) Execute(frame *runtime.Frame) {
 	if frame.GetOperandStack().PopInt() != 0 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -31,7 +31,7 @@ type IfLt struct {
 
 func (i *IfLt) Execute(frame *runtime.Frame) {
 	if frame.GetOperandStack().PopInt() < 0 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -41,7 +41,7 @@ type IfLe struct {
 
 func (i *IfLe) Execute(frame *runtime.Frame) {
 	if frame.GetOperandStack().PopInt() <= 0 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -51,7 +51,7 @@ type IfGt struct {
 
 func (i *IfGt) Execute(frame *runtime.Frame) {
 	if frame.GetOperandStack().PopInt() > 0 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -61,6 +61,6 @@ type IfGe struct {
 
 func (i *IfGe) Execute(frame *runtime.Frame) {
 	if frame.GetOperandStack().PopInt() >= 0 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }

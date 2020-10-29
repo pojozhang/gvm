@@ -26,12 +26,12 @@ func (i *BranchInstruction) FetchOperands(reader *runtime.BytecodeReader) {
 func (i *BranchInstruction) Execute(frame *runtime.Frame) {
 }
 
-func (i *BranchInstruction) Branch(frame *runtime.Frame, offset int) {
-	frame.SetNextPC(frame.GetThread().GetPC() + offset)
-}
-
 type Index8Instruction struct {
 	index uint
+}
+
+func (i *Index8Instruction) GetIndex() uint {
+	return i.index
 }
 
 func (i *Index8Instruction) FetchOperands(reader *runtime.BytecodeReader) {
@@ -43,6 +43,10 @@ func (i *Index8Instruction) Execute(frame *runtime.Frame) {
 
 type Index16Instruction struct {
 	index uint
+}
+
+func (i *Index16Instruction) GetIndex() uint {
+	return i.index
 }
 
 func (i *Index16Instruction) FetchOperands(reader *runtime.BytecodeReader) {

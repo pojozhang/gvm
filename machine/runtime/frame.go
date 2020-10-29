@@ -21,6 +21,10 @@ func (f *Frame) GetThread() *Thread {
 	return f.thread
 }
 
+func (f *Frame) Jump(offset int) {
+	f.SetNextPC(f.GetThread().GetPC() + offset)
+}
+
 func (f *Frame) SetNextPC(offset int) {
 
 }

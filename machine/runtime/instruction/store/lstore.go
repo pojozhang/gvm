@@ -1,21 +1,24 @@
-package instruction
+package store
 
-import "gvm/machine/runtime"
+import (
+	"gvm/machine/runtime"
+	"gvm/machine/runtime/instruction"
+)
 
 func storeLong(frame *runtime.Frame, index uint) {
 	frame.GetLocalVars().SetLong(index, frame.GetOperandStack().PopLong())
 }
 
 type LStore struct {
-	Index8Instruction
+	instruction.Index8Instruction
 }
 
 func (i *LStore) Execute(frame *runtime.Frame) {
-	storeLong(frame, i.index)
+	storeLong(frame, i.GetIndex())
 }
 
 type LStore0 struct {
-	NoOperandsInstruction
+	instruction.NoOperandsInstruction
 }
 
 func (i *LStore0) Execute(frame *runtime.Frame) {
@@ -23,7 +26,7 @@ func (i *LStore0) Execute(frame *runtime.Frame) {
 }
 
 type LStore1 struct {
-	NoOperandsInstruction
+	instruction.NoOperandsInstruction
 }
 
 func (i *LStore1) Execute(frame *runtime.Frame) {
@@ -31,7 +34,7 @@ func (i *LStore1) Execute(frame *runtime.Frame) {
 }
 
 type LStore2 struct {
-	NoOperandsInstruction
+	instruction.NoOperandsInstruction
 }
 
 func (i *LStore2) Execute(frame *runtime.Frame) {
@@ -39,9 +42,17 @@ func (i *LStore2) Execute(frame *runtime.Frame) {
 }
 
 type LStore3 struct {
-	NoOperandsInstruction
+	instruction.NoOperandsInstruction
 }
 
 func (i *LStore3) Execute(frame *runtime.Frame) {
 	storeLong(frame, 3)
+}
+
+type WLStore struct {
+	instruction.Index16Instruction
+}
+
+func (i *WLStore) Execute(frame *runtime.Frame) {
+	storeLong(frame, i.GetIndex())
 }

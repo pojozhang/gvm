@@ -12,7 +12,7 @@ type IfICmpEq struct {
 func (i *IfICmpEq) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	if stack.PopInt() == stack.PopInt() {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -23,7 +23,7 @@ type IfICmpNe struct {
 func (i *IfICmpNe) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	if stack.PopInt() != stack.PopInt() {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -35,7 +35,7 @@ func (i *IfICmpLt) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	v1, v2 := stack.PopInt(), stack.PopInt()
 	if v2 < v1 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -47,7 +47,7 @@ func (i *IfICmpLe) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	v1, v2 := stack.PopInt(), stack.PopInt()
 	if v2 <= v1 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -59,7 +59,7 @@ func (i *IfICmpGt) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	v1, v2 := stack.PopInt(), stack.PopInt()
 	if v2 > v1 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
 
@@ -71,6 +71,6 @@ func (i *IfICmpGe) Execute(frame *runtime.Frame) {
 	stack := frame.GetOperandStack()
 	v1, v2 := stack.PopInt(), stack.PopInt()
 	if v2 >= v1 {
-		i.Branch(frame, i.GetOffset())
+		frame.Jump(i.GetOffset())
 	}
 }
