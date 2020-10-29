@@ -6,7 +6,7 @@ import (
 )
 
 type IfACmpEq struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfACmpEq) Execute(frame *runtime.Frame) {
@@ -17,7 +17,7 @@ func (i *IfACmpEq) Execute(frame *runtime.Frame) {
 }
 
 type IfACmpNe struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfACmpNe) Execute(frame *runtime.Frame) {

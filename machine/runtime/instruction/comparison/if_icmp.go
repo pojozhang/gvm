@@ -6,7 +6,7 @@ import (
 )
 
 type IfICmpEq struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfICmpEq) Execute(frame *runtime.Frame) {
@@ -17,7 +17,7 @@ func (i *IfICmpEq) Execute(frame *runtime.Frame) {
 }
 
 type IfICmpNe struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfICmpNe) Execute(frame *runtime.Frame) {
@@ -28,7 +28,7 @@ func (i *IfICmpNe) Execute(frame *runtime.Frame) {
 }
 
 type IfICmpLt struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfICmpLt) Execute(frame *runtime.Frame) {
@@ -40,7 +40,7 @@ func (i *IfICmpLt) Execute(frame *runtime.Frame) {
 }
 
 type IfICmpLe struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfICmpLe) Execute(frame *runtime.Frame) {
@@ -52,7 +52,7 @@ func (i *IfICmpLe) Execute(frame *runtime.Frame) {
 }
 
 type IfICmpGt struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfICmpGt) Execute(frame *runtime.Frame) {
@@ -64,7 +64,7 @@ func (i *IfICmpGt) Execute(frame *runtime.Frame) {
 }
 
 type IfICmpGe struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfICmpGe) Execute(frame *runtime.Frame) {

@@ -6,7 +6,7 @@ import (
 )
 
 type IfEq struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfEq) Execute(frame *runtime.Frame) {
@@ -16,7 +16,7 @@ func (i *IfEq) Execute(frame *runtime.Frame) {
 }
 
 type IfNe struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfNe) Execute(frame *runtime.Frame) {
@@ -26,7 +26,7 @@ func (i *IfNe) Execute(frame *runtime.Frame) {
 }
 
 type IfLt struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfLt) Execute(frame *runtime.Frame) {
@@ -36,7 +36,7 @@ func (i *IfLt) Execute(frame *runtime.Frame) {
 }
 
 type IfLe struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfLe) Execute(frame *runtime.Frame) {
@@ -46,7 +46,7 @@ func (i *IfLe) Execute(frame *runtime.Frame) {
 }
 
 type IfGt struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfGt) Execute(frame *runtime.Frame) {
@@ -56,7 +56,7 @@ func (i *IfGt) Execute(frame *runtime.Frame) {
 }
 
 type IfGe struct {
-	instruction.BranchInstruction
+	instruction.JumpInstruction
 }
 
 func (i *IfGe) Execute(frame *runtime.Frame) {

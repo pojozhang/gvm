@@ -11,19 +11,19 @@ func (i *NoOperandsInstruction) FetchOperands(reader *runtime.BytecodeReader) {
 func (i *NoOperandsInstruction) Execute(frame *runtime.Frame) {
 }
 
-type BranchInstruction struct {
+type JumpInstruction struct {
 	offset int
 }
 
-func (i *BranchInstruction) GetOffset() int {
+func (i *JumpInstruction) GetOffset() int {
 	return i.offset
 }
 
-func (i *BranchInstruction) FetchOperands(reader *runtime.BytecodeReader) {
+func (i *JumpInstruction) FetchOperands(reader *runtime.BytecodeReader) {
 	i.offset = int(reader.ReadInt16())
 }
 
-func (i *BranchInstruction) Execute(frame *runtime.Frame) {
+func (i *JumpInstruction) Execute(frame *runtime.Frame) {
 }
 
 type Index8Instruction struct {
